@@ -84,7 +84,7 @@ class Downloader:
                 self.threads.append(thread)
                 thread.start()
             elif resource_type == TXT_TYPE or resource_type == FILE_TYPE:
-                file_res = self._get_resource(url + href)
+                file_res = self._get_resource(f'{url.rstrip("/")}/{href}')
                 open(f'{path}/{href}', 'wb').write(file_res.content)
                 self.file_count += 1
 
